@@ -126,7 +126,7 @@ function moveNo(){
 }
 
 function goYes(){
-    window.location.href="yes.html";
+    window.location.href="yes_sree.html";
 }
 </script>
 
