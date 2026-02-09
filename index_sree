@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(to bottom,#ff9a9e,#fad0c4);
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+
+    /* CENTER EVERYTHING */
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+/* Center container */
+.container{
+    position:relative;
+}
+
+h1{color:#b30059;}
+
+.buttons{
+    margin-top:30px;
+    position:relative;
+}
+
+.btn{
+    padding:14px 32px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    transition:transform 0.3s;
+}
+
+#yesBtn{
+    background:#ff3366;
+    color:white;
+}
+
+#noContainer{
+    display:inline-block;
+    position:absolute;
+    margin-left:20px;
+}
+
+#noBtn{
+    background:#555;
+    color:white;
+}
+
+#msg{
+    margin-top:8px;
+    font-size:17px;
+    color:#800040;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>VIMAL 💕</h1>
+    <h2>Will you be my Valentine?</h2>
+    <p>– Sree 💌</p>
+
+    <div class="buttons">
+        <button id="yesBtn" class="btn" onclick="goYes()">Yes 💖</button>
+
+        <div id="noContainer">
+            <button id="noBtn" class="btn">No</button>
+            <div id="msg"></div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const messages=[
+ "Please don't do this 💭",
+ "I am yours ❤️",
+ "Please no 🙏",
+ "Sorry, you can't select NO 😆"
+];
+
+let i=0;
+let noScale=1;
+let yesScale=1;
+
+const noContainer=document.getElementById("noContainer");
+const msg=document.getElementById("msg");
+const noBtn=document.getElementById("noBtn");
+const yesBtn=document.getElementById("yesBtn");
+
+noContainer.addEventListener("click",()=>{
+    moveNo();
+
+    if(i<messages.length){
+        msg.innerText=messages[i++];
+    }
+
+    // NO becomes smaller
+    noScale -= 0.15;
+    noBtn.style.transform = `scale(${noScale})`;
+
+    // YES becomes bigger
+    yesScale += 0.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
+});
+
+function moveNo(){
+    const x=Math.random()*(innerWidth-200);
+    const y=Math.random()*(innerHeight-200);
+    noContainer.style.position="fixed";
+    noContainer.style.left=x+"px";
+    noContainer.style.top=y+"px";
+}
+
+function goYes(){
+    window.location.href="yes.html";
+}
+</script>
+
+</body>
+</html>
