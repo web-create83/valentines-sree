@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Forever ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:radial-gradient(circle at top,#ff9ab3,#ff5c8a,#b0004b);
+    font-family:'Segoe UI',Arial,sans-serif;
+    text-align:center;
+    overflow:hidden;
+    color:white;
+}
+
+/* Spotlight glow */
+.glow{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(255,255,255,0.25),transparent 70%);
+    filter:blur(40px);
+    z-index:0;
+}
+
+/* Titles */
+h1{
+    margin-top:40px;
+    font-size:38px;
+    background:linear-gradient(45deg,#ffd700,#fff,#ffd700);
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 20px rgba(255,215,0,0.6);
+    animation:fadeInDown 1.5s ease;
+}
+
+h2{
+    margin-top:10px;
+    font-weight:300;
+    animation:fadeIn 2.5s ease;
+}
+
+/* Big heart */
+.big-heart{
+    font-size:120px;
+    margin-top:10px;
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+    100%{transform:scale(1);}
+}
+
+/* Slideshow */
+#slide{
+    width:280px;
+    border-radius:22px;
+    margin-top:20px;
+    box-shadow:0 0 40px rgba(255,255,255,0.4);
+    animation:fadeIn 3s ease;
+}
+
+/* Floating hearts */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:22px;
+    animation:float 7s linear infinite;
+}
+@keyframes float{
+    to{transform:translateY(-110vh);opacity:0;}
+}
+
+/* Sparkles */
+.sparkle{
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s ease-out forwards;
+}
+@keyframes twinkle{
+    to{transform:scale(0);opacity:0;}
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:8px;
+    height:14px;
+    top:-20px;
+    animation:fall 3s linear forwards;
+}
+@keyframes fall{
+    to{transform:translateY(110vh) rotate(360deg);opacity:0;}
+}
+
+/* Animations */
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:none;}}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<h1>VIMAL ❤️ VIDHYA</h1>
+<h2>என்றும் உன்னோடு… Forever & Always 💍</h2>
+
+<div class="big-heart">❤️</div>
+
+<img id="slide" src="https://media.tenor.com/zhnbS6DI_60AAAAi/djnitish97-hug.gif">
+
+<script>
+/* 🌸 Floating hearts */
+setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),7000);
+},300);
+
+/* ✨ Sparkles */
+setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.style.left=Math.random()*100+"vw";
+    s.style.top=Math.random()*100+"vh";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),2000);
+},400);
+
+/* 🎉 Confetti blast on load */
+for(let i=0;i<180;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,50%)`;
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+}
+
+/* 🖼 Slideshow with fade */
+const images=[
+ "https://media.tenor.com/__iEnCX1420AAAAm/i-love-you-love-you.webp",
+ "https://media.tenor.com/r21VpnHTN44AAAAM/i-love-you-love.gif",
+ "https://media.tenor.com/zhnbS6DI_60AAAAi/djnitish97-hug.gif"
+ 
+];
+let idx=0;
+setInterval(()=>{
+    idx=(idx+1)%images.length;
+    const img=document.getElementById("slide");
+    img.style.opacity=0;
+    setTimeout(()=>{
+        img.src=images[idx];
+        img.style.opacity=1;
+    },400);
+},3500);
+</script>
+
+</body>
+</html>
